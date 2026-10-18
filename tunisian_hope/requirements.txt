@@ -1,0 +1,36 @@
+# =============================================================================
+# Tunisian Hope & Future — Python Dependencies
+# =============================================================================
+# EXAM DEFENSE: Every package here has a clear purpose. No bloat.
+#
+# Core Framework
+# ---------------
+# Django           → The web framework (MVT pattern)
+# psycopg2-binary  → PostgreSQL adapter for Python (binary = no C compiler needed)
+#
+# API Layer
+# ---------
+# djangorestframework  → REST API framework (serializers, viewsets, permissions)
+# strawberry-graphql-django → Modern GraphQL with Python type hints (Criterion F6)
+#
+# Testing
+# -------
+# pytest            → Better test runner than Django's default unittest
+# pytest-django     → pytest plugin that integrates with Django's test DB
+#
+# Data Handling
+# -------------
+# pandas            → CSV/data processing for synthetic data ingestion
+# =============================================================================
+
+Django>=5.1,<6.0
+psycopg2-binary>=2.9
+
+djangorestframework>=3.15
+strawberry-graphql-django>=0.47
+
+pytest>=8.0
+pytest-django>=4.9
+
+pandas>=2.2
+Faker>=33.0

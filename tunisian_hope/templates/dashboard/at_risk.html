@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}At-Risk Students — Tunisian Hope & Future{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 fw-bold mb-0">
+            <i class="bi bi-exclamation-triangle text-danger me-2"></i>
+            At-Risk Students
+        </h1>
+        <p class="text-muted mb-0 mt-1">
+            {{ total_count }} students flagged by the risk assessment engine
+        </p>
+    </div>
+    <a href="{% url 'dashboard:student_list' %}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Back to All Students
+    </a>
+</div>
+
+{% if total_count > 0 %}
+<div class="alert alert-warning d-flex align-items-center" role="alert">
+    <i class="bi bi-info-circle me-2 fs-5"></i>
+    <div>
+        These students have been automatically flagged by our risk assessment engine.
+        Students with a risk score above 0.7 are classified as <strong>High Risk</strong>.
+    </div>
+</div>
+{% endif %}
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="at-risk-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>School</th>
+                        <th>Attendance</th>
+                        <th>Grade Trend</th>
+                        <th>Behavior</th>
+                        <th>Risk Score</th>
+                        <th>Risk Factors</th>
+                        <th>Case Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr class="{% if student.risk_score >= 0.7 %}table-danger{% elif student.risk_score >= 0.3 %}table-warning{% endif %}">
+                        <td><code>{{ student.student_id }}</code></td>
+                        <td><strong>{{ student.first_name }} {{ student.last_name }}</strong></td>
+                        <td>{{ student.school_name }}</td>
+                        <td>
+                            <span class="risk-high">{{ student.attendance_rate }}%</span>
+                        </td>
+                        <td>
+                            {% if student.grade_trend == 'declining' %}
+                                <span class="risk-high"><i class="bi bi-arrow-down-circle me-1"></i>Declining</span>
+                            {% elif student.grade_trend == 'stable' %}
+                                <span class="risk-medium"><i class="bi bi-dash-circle me-1"></i>Stable</span>
+                            {% else %}
+                                <span class="risk-low"><i class="bi bi-arrow-up-circle me-1"></i>Improving</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ student.behavior_notes_count }}</td>
+                        <td>
+                            <span class="badge {% if student.risk_score >= 0.7 %}bg-danger{% elif student.risk_score >= 0.3 %}bg-warning text-dark{% else %}bg-info{% endif %} fs-6">
+                                {{ student.risk_score|floatformat:2 }}
+                            </span>
+                        </td>
+                        <td>
+                            {% for factor in student.risk_factors %}
+                                <small class="d-block text-danger">
+                                    <i class="bi bi-dot"></i> {{ factor }}
+                                </small>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <span class="badge badge-{{ student.case.status }}">
+                                {{ student.case.get_status_display }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" class="text-center text-muted py-4">
+                            <i class="bi bi-check-circle-fill text-success me-1 fs-4"></i>
+                            <br>No at-risk students found. All students are within safe thresholds.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

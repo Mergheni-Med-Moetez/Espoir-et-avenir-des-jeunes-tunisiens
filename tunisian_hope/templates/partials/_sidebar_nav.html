@@ -1,0 +1,153 @@
+<!--
+  Sidebar Navigation Partial — Role-Based Menu Items
+  =====================================================
+
+  EXAM DEFENSE: Partial Template + Role-Based Rendering
+  =======================================================
+  This partial is `include`'d in both the desktop sidebar and the
+  mobile offcanvas. By using a partial, we avoid duplicating the nav
+  links in two places (DRY principle).
+
+  Each section uses `if` to check the user's group membership:
+  - Server-side rendering means hidden links are NEVER sent to the browser
+  - This is more secure than JavaScript show/hide (which can be bypassed)
+  - Django evaluates user.groups at render time using the session cookie
+
+  The 'active' class is set by checking `block active_page` in child
+  templates. Each page sets this block to its identifier.
+-->
+
+{% comment %}
+  Helper: We capture the user's role name once to avoid repeated queries.
+  The {% with %} tag assigns a variable for the duration of the block.
+{% endcomment %}
+{% with user_role=user.groups.first.name %}
+
+<ul class="nav flex-column">
+
+    <!-- ============================================================ -->
+    <!-- SECTION: Common (visible to ALL authenticated users)          -->
+    <!-- ============================================================ -->
+    <li class="nav-item mb-1">
+        <small class="text-muted text-uppercase fw-semibold px-3">Overview</small>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'dashboard' %}active fw-bold{% endif %}"
+           href="{% url 'dashboard:home' %}" id="sidebar-dashboard">
+            <i class="bi bi-speedometer2 me-2"></i> Dashboard
+        </a>
+    </li>
+    {% if user_role == 'Supervisor' or user_role == 'System Admin' %}
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'alerts' %}active fw-bold{% endif %}"
+           href="{% url 'dashboard:alerts_list' %}" id="sidebar-alerts">
+            <i class="bi bi-bell me-2"></i> Alerts
+        </a>
+    </li>
+    {% endif %}
+
+    <hr class="my-2">
+
+    <!-- ============================================================ -->
+    <!-- SECTION: Case Management (Operators, Supervisors)-->
+    <!-- ============================================================ -->
+    {% if user_role == 'Field Operator' or user_role == 'Supervisor' or user_role == 'System Admin' %}
+    <li class="nav-item mb-1">
+        <small class="text-muted text-uppercase fw-semibold px-3">Case Management</small>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'cases' %}active fw-bold{% endif %}"
+           href="{% url 'admin:core_case_changelist' %}" id="sidebar-cases" target="_blank">
+            <i class="bi bi-folder2-open me-2"></i> All Cases <small class="text-muted">↗</small>
+        </a>
+    </li>
+
+
+
+    <hr class="my-2">
+    {% endif %}
+
+    <!-- ============================================================ -->
+    <!-- SECTION: Education Scenario (visible to all authenticated)    -->
+    <!-- ============================================================ -->
+    <li class="nav-item mb-1">
+        <small class="text-muted text-uppercase fw-semibold px-3">Education</small>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'students' %}active fw-bold{% endif %}"
+           href="{% url 'dashboard:student_list' %}" id="sidebar-students">
+            <i class="bi bi-mortarboard me-2"></i> Student Records
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'at-risk' %}active fw-bold{% endif %}"
+           href="{% url 'dashboard:at_risk' %}" id="sidebar-at-risk">
+            <i class="bi bi-exclamation-triangle me-2"></i> At-Risk
+        </a>
+    </li>
+
+    <hr class="my-2">
+
+    <!-- ============================================================ -->
+    <!-- SECTION: Health Scenario (visible to all authenticated)       -->
+    <!-- ============================================================ -->
+    <li class="nav-item mb-1">
+        <small class="text-muted text-uppercase fw-semibold px-3">Health</small>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'health_records' %}active fw-bold{% endif %}"
+           href="{% url 'dashboard:health_record_list' %}" id="sidebar-health-records">
+            <i class="bi bi-heart-pulse me-2"></i> Health Records
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'at_risk_health' %}active fw-bold{% endif %}"
+           href="{% url 'dashboard:at_risk_health' %}" id="sidebar-at-risk-health">
+            <i class="bi bi-exclamation-triangle me-2"></i> At-Risk
+        </a>
+    </li>
+
+    <hr class="my-2">
+
+    <!-- ============================================================ -->
+    <!-- SECTION: Administration (Supervisors and Admins only)         -->
+    <!-- ============================================================ -->
+    <!--
+      EXAM DEFENSE: Server-Side Role Filtering
+      ===========================================
+      These links are only rendered if the user is a Supervisor or Admin.
+      The HTML is never sent to Operators — they can't even
+      see these menu items in the browser's "View Source" because Django
+      never generates the HTML in the first place.
+    -->
+    {% if user_role == 'Supervisor' or user_role == 'System Admin' %}
+    <li class="nav-item mb-1">
+        <small class="text-muted text-uppercase fw-semibold px-3">Administration</small>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_page == 'audit-log' %}active fw-bold{% endif %}"
+           href="{% url 'admin:core_auditlog_changelist' %}" id="sidebar-audit-log" target="_blank">
+            <i class="bi bi-journal-text me-2"></i> Audit Log <small class="text-muted">↗</small>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if user_role == 'System Admin' %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin:index' %}" id="sidebar-admin">
+            <i class="bi bi-gear me-2"></i> Django Admin
+        </a>
+    </li>
+    {% endif %}
+
+    {% if user_role == 'System Admin' or user_role == 'Supervisor' %}
+    <li class="nav-item">
+        <a class="nav-link" href="/graphql/" id="sidebar-graphql" target="_blank">
+            <i class="bi bi-braces me-2"></i> GraphQL <small class="text-muted">↗</small>
+        </a>
+    </li>
+    {% endif %}
+
+</ul>
+
+{% endwith %}

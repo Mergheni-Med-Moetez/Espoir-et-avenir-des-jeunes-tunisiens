@@ -1,0 +1,228 @@
+/*
+ * Tunisian Hope & Future — Custom Styles
+ * ========================================
+ *
+ * EXAM DEFENSE: Custom CSS
+ * ==========================
+ * Bootstrap 5 provides the base styling, but we customize:
+ * 1. Font family (Inter — modern, clean, Google Font)
+ * 2. Color palette (Tunisian-inspired warm tones)
+ * 3. Card shadows and hover effects for premium feel
+ * 4. Status badge colors matching our state machine
+ *
+ * We use CSS custom properties (variables) so colors are defined
+ * once and reused everywhere — easy to change the entire theme.
+ */
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================================ */
+:root {
+    /* Primary palette — warm, hopeful tones */
+    --thf-primary: #2563eb;       /* Royal blue — trust, stability */
+    --thf-primary-light: #3b82f6;
+    --thf-secondary: #f59e0b;     /* Amber — warmth, hope */
+    --thf-success: #10b981;       /* Emerald — positive outcomes */
+    --thf-danger: #ef4444;        /* Red — critical alerts */
+    --thf-warning: #f59e0b;       /* Amber — caution */
+
+    /* Neutral palette */
+    --thf-bg: #f8fafc;
+    --thf-card-bg: #ffffff;
+    --thf-text: #1e293b;
+    --thf-text-muted: #64748b;
+    --thf-border: #e2e8f0;
+
+    /* Typography */
+    --thf-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Spacing and effects */
+    --thf-radius: 0.75rem;
+    --thf-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --thf-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+    --thf-transition: all 0.2s ease-in-out;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+body {
+    font-family: var(--thf-font);
+    background-color: var(--thf-bg);
+    color: var(--thf-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* ============================================================
+   CARD ENHANCEMENTS
+   ============================================================ */
+.card {
+    border: 1px solid var(--thf-border);
+    border-radius: var(--thf-radius);
+    box-shadow: var(--thf-shadow);
+    transition: var(--thf-transition);
+}
+
+.card:hover {
+    box-shadow: var(--thf-shadow-md);
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   STATUS BADGES — Match our State Machine states
+   ============================================================ */
+.badge-intake {
+    background-color: #818cf8;  /* Indigo — new, unprocessed */
+    color: white;
+}
+
+.badge-assessment {
+    background-color: #f59e0b;  /* Amber — under review */
+    color: #1e293b;
+}
+
+.badge-active {
+    background-color: #3b82f6;  /* Blue — actively being handled */
+    color: white;
+}
+
+.badge-followup {
+    background-color: #10b981;  /* Emerald — monitoring */
+    color: white;
+}
+
+.badge-closed {
+    background-color: #6b7280;  /* Gray — completed */
+    color: white;
+}
+
+/* Priority badges */
+.badge-low       { background-color: #94a3b8; color: white; }
+.badge-medium    { background-color: #3b82f6; color: white; }
+.badge-high      { background-color: #f59e0b; color: #1e293b; }
+.badge-critical  { background-color: #ef4444; color: white; }
+
+/* ============================================================
+   KPI CARDS (Dashboard)
+   ============================================================ */
+.kpi-card {
+    border-left: 4px solid var(--thf-primary);
+    padding: 1.25rem;
+}
+
+.kpi-card .kpi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--thf-text);
+}
+
+.kpi-card .kpi-label {
+    font-size: 0.875rem;
+    color: var(--thf-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   TABLE ENHANCEMENTS
+   ============================================================ */
+.table-hover tbody tr {
+    transition: var(--thf-transition);
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* ============================================================
+   NAVBAR CUSTOMIZATION
+   ============================================================ */
+.navbar-brand {
+    font-size: 1.1rem;
+}
+
+/* ============================================================
+   RESPONSIVE TWEAKS
+   ============================================================ */
+@media (max-width: 768px) {
+    .kpi-card .kpi-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================================================
+   SIDEBAR NAVIGATION
+   ============================================================ */
+/*
+ * EXAM DEFENSE: Sidebar Styles
+ * ==============================
+ * The sidebar uses Bootstrap's nav component with our custom colors.
+ * position: sticky keeps it visible while scrolling the main content.
+ * min-height: calc(100vh - 56px) ensures it spans the full viewport
+ * minus the navbar height (56px is Bootstrap's default navbar height).
+ */
+.sidebar {
+    position: sticky;
+    top: 56px; /* Below the sticky navbar */
+    min-height: calc(100vh - 56px);
+    border-right: 1px solid var(--thf-border);
+    overflow-y: auto;
+}
+
+.sidebar .nav-link {
+    color: var(--thf-text);
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    margin: 0.125rem 0.5rem;
+    font-size: 0.9rem;
+    transition: var(--thf-transition);
+}
+
+.sidebar .nav-link:hover {
+    background-color: #e2e8f0;
+    color: var(--thf-primary);
+}
+
+.sidebar .nav-link.active {
+    background-color: var(--thf-primary);
+    color: white;
+}
+
+.sidebar .nav-link.active:hover {
+    background-color: var(--thf-primary-light);
+    color: white;
+}
+
+/* ============================================================
+   KPI CARD VARIANTS (Color-coded borders)
+   ============================================================ */
+.kpi-card.kpi-danger  { border-left-color: var(--thf-danger); }
+.kpi-card.kpi-warning { border-left-color: var(--thf-warning); }
+.kpi-card.kpi-success { border-left-color: var(--thf-success); }
+.kpi-card.kpi-info    { border-left-color: var(--thf-primary); }
+
+.kpi-card .kpi-icon {
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+/* ============================================================
+   RISK INDICATOR COLORS (Student list)
+   ============================================================ */
+.risk-high   { color: var(--thf-danger); font-weight: 600; }
+.risk-medium { color: var(--thf-warning); font-weight: 600; }
+.risk-low    { color: var(--thf-success); font-weight: 600; }
+.risk-none   { color: var(--thf-text-muted); }
+
+/* ============================================================
+   PROGRESS BAR ANIMATION
+   ============================================================ */
+.progress-bar {
+    transition: width 1s ease-in-out;
+}

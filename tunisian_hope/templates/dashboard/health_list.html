@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Health Records — Tunisian Hope & Future{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 fw-bold mb-0">
+            <i class="bi bi-heart-pulse text-primary me-2"></i>
+            Health Records
+        </h1>
+        <p class="text-muted mb-0 mt-1">
+            All {{ total_count }} patient records in the Health scenario
+        </p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="health-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Condition</th>
+                        <th>Adherence Rate</th>
+                        <th>Missed Appointments</th>
+                        <th>Risk Score</th>
+                        <th>Case Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td><code>{{ student.student_id }}</code></td>
+                        <td><strong>{{ student.first_name }} {{ student.last_name }}</strong></td>
+                        <td>{{ student.health_condition }}</td>
+                        <td>
+                            <span class="{% if student.adherence_rate < 60 %}risk-high{% elif student.adherence_rate < 80 %}risk-medium{% else %}risk-low{% endif %}">
+                                {{ student.adherence_rate }}%
+                            </span>
+                        </td>
+                        <td>{{ student.missed_appointments }}</td>
+                        <td>
+                            {% if student.risk_score is not None %}
+                            <span class="badge {% if student.risk_score >= 0.7 %}bg-danger{% elif student.risk_score > 0 %}bg-warning text-dark{% else %}bg-success{% endif %}">
+                                {{ student.risk_score|floatformat:2 }}
+                            </span>
+                            {% else %}
+                            <span class="badge bg-secondary">N/A</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="badge badge-{{ student.case.status }}">
+                                {{ student.case.get_status_display }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-3">
+                            No health records found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

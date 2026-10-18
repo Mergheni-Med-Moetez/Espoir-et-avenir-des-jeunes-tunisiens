@@ -1,0 +1,253 @@
+<!--
+  Base Template — Bootstrap 5 Responsive Layout with Role-Based Sidebar
+  ======================================================================
+
+  EXAM DEFENSE: Base Template Inheritance
+  ==========================================
+  This template defines the overall structure of every page.
+  It uses Django's extends and block system —
+  child templates override block content with their page content.
+  2. The sidebar uses if blocks to show/hide links based on the
+     user's group (role). This is server-side rendering — no JavaScript needed.
+  3. Bootstrap 5 via CDN avoids npm/build complexity.
+  4. We use an offcanvas sidebar on mobile for clean responsive behavior.
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tunisian Hope & Future — Youth support platform for education and health.">
+
+    <title>{% block title %}Tunisian Hope & Future{% endblock %}</title>
+
+    <!-- Bootstrap 5 CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+          rel="stylesheet">
+
+    <!-- Google Fonts — Inter (modern, clean, readable) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Custom project styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- ================================================================== -->
+    <!-- TOP NAVIGATION BAR                                                   -->
+    <!-- ================================================================== -->
+    <!--
+      EXAM DEFENSE: Navbar Design
+      =============================
+      - navbar-expand-lg: collapses into hamburger on small screens
+      - sticky-top: stays visible when scrolling
+      - We show the user's role badge next to their name for immediate feedback
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'dashboard:home' %}">
+                <i class="bi bi-hearts me-2 text-danger"></i>
+                <span class="fw-semibold">Tunisian Hope & Future</span>
+            </a>
+
+            <!-- Sidebar toggle for mobile -->
+            {% if user.is_authenticated %}
+            <button class="btn btn-outline-secondary d-lg-none me-2" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas"
+                    aria-controls="sidebarOffcanvas" aria-label="Toggle sidebar">
+                <i class="bi bi-layout-sidebar"></i>
+            </button>
+            {% endif %}
+
+            <!-- Mobile toggle for top nav items -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item d-flex align-items-center me-3">
+                        <!--
+                          EXAM DEFENSE: Role badge in the navbar
+                          =========================================
+                          During the live demo, this provides instant visibility
+                          of which role is logged in. Different badge colors help
+                          distinguish roles at a glance.
+                        -->
+                        {% if user.groups.first %}
+                        <span class="badge
+                            {% if user.groups.first.name == 'System Admin' %}bg-danger
+                            {% elif user.groups.first.name == 'Supervisor' %}bg-warning text-dark
+                            {% else %}bg-secondary
+                            {% endif %} me-2">
+                            <i class="bi bi-person-badge me-1"></i>
+                            {{ user.groups.first.name }}
+                        </span>
+                        {% endif %}
+                        <span class="text-light">
+                            {{ user.get_full_name|default:user.username }}
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning" href="{% url 'admin:index' %}" id="nav-admin">
+                            <i class="bi bi-gear me-1"></i> Admin
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'admin:logout' %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link text-danger" id="nav-logout">
+                                <i class="bi bi-box-arrow-right me-1"></i> Logout
+                            </button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:login' %}" id="nav-login">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================================================================== -->
+    <!-- MESSAGES (Django's built-in flash messages)                          -->
+    <!-- ================================================================== -->
+    {% if messages %}
+    <div class="container-fluid mt-3 px-4">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- ================================================================== -->
+    <!-- MAIN LAYOUT: SIDEBAR + CONTENT                                      -->
+    <!-- ================================================================== -->
+    <!--
+      EXAM DEFENSE: Sidebar + Content Layout
+      =========================================
+      We use Bootstrap's grid system to create a 2-column layout:
+      - Sidebar (col-lg-2): Role-based navigation links
+      - Content (col-lg-10): The actual page content
+
+      On mobile, the sidebar collapses into an offcanvas drawer
+      triggered by the button in the navbar. This is responsive design.
+
+      The sidebar links are filtered by user role using Django template
+      `if` tags — this is SERVER-SIDE rendering. The HTML for hidden
+      links is never sent to the client (unlike JavaScript hide/show).
+    -->
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- ========================================================== -->
+            <!-- SIDEBAR (Desktop: always visible, Mobile: offcanvas)        -->
+            <!-- ========================================================== -->
+            {% if user.is_authenticated %}
+
+            <!-- Desktop sidebar -->
+            <nav class="col-lg-2 d-none d-lg-block sidebar bg-light py-3" id="desktopSidebar">
+                {% include "partials/_sidebar_nav.html" %}
+            </nav>
+
+            <!-- Mobile offcanvas sidebar -->
+            <div class="offcanvas offcanvas-start" tabindex="-1"
+                 id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">
+                        <i class="bi bi-hearts text-danger me-2"></i> Navigation
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    {% include "partials/_sidebar_nav.html" %}
+                </div>
+            </div>
+
+            <!-- Main content area -->
+            <main class="col-lg-10 py-4 px-4">
+                {% block content %}
+                <!-- Child templates override this block -->
+                {% endblock %}
+            </main>
+
+            {% else %}
+
+            <!-- Not authenticated: full-width content, no sidebar -->
+            <main class="col-12 py-4">
+                {% block content_anon %}
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center py-5">
+                        <h1 class="display-4 fw-bold text-primary mb-3">
+                            <i class="bi bi-hearts"></i> Tunisian Hope & Future
+                        </h1>
+                        <p class="lead text-muted">
+                            A social-impact platform tracking youth behavior, education,
+                            and health using strictly synthetic data.
+                        </p>
+                        <hr class="my-4">
+                        <p class="text-muted">
+                            <i class="bi bi-shield-check me-1"></i>
+                            4 Roles • 3 Scenarios • Strict State Machine
+                        </p>
+                        <a href="{% url 'admin:login' %}" class="btn btn-primary btn-lg mt-3">
+                            <i class="bi bi-box-arrow-in-right me-2"></i> Log In to Continue
+                        </a>
+                    </div>
+                </div>
+                {% endblock %}
+            </main>
+
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- FOOTER                                                              -->
+    <!-- ================================================================== -->
+    <footer class="bg-dark text-light py-3 mt-auto">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <small>
+                        <i class="bi bi-mortarboard me-1"></i>
+                        SESAME University — Python Web Programming (Django) — 2025–2026
+                    </small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <small class="text-muted">
+                        Built with Django &amp; Bootstrap 5 • Synthetic Data Only
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

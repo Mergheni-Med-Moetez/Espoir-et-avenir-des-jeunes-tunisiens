@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Alerts | Tunisian Hope{% endblock %}
+
+{% block active_page %}alerts{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-bell text-primary me-2"></i> My Alerts</h2>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Status</th>
+                                <th>Date</th>
+                                <th>Case Reference</th>
+                                <th>Message</th>
+                                <th>AI Report</th>
+                                <th class="text-end pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for alert in alerts %}
+                            <tr>
+                                <td class="ps-4">
+                                    {% if alert.is_read %}
+                                    <span class="badge bg-secondary">Read</span>
+                                    {% else %}
+                                    <span class="badge bg-primary">New</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ alert.created_at|date:"M d, Y H:i" }}</td>
+                                <td>
+                                    <strong>{{ alert.case.reference }}</strong>
+                                </td>
+                                <td>{{ alert.message }}</td>
+                                <td>
+                                    {% if alert.report_text %}
+                                    <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i> Generated</span>
+                                    {% else %}
+                                    <span class="badge bg-warning text-dark"><i class="bi bi-hourglass-split me-1"></i> Pending</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-end pe-4">
+                                    <a href="{% url 'dashboard:alert_detail' alert.id %}" class="btn btn-sm btn-outline-primary">
+                                        View Details
+                                    </a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="6" class="text-center py-4 text-muted">
+                                    <i class="bi bi-check-circle fs-4 d-block mb-2 text-success"></i>
+                                    You have no alerts at this time.
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

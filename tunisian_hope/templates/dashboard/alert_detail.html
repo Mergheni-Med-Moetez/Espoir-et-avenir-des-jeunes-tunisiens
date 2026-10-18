@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Alert Details | Tunisian Hope{% endblock %}
+
+{% block active_page %}alerts{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-info-circle text-primary me-2"></i> Alert Detail</h2>
+    <a href="{% url 'dashboard:alerts_list' %}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Back to Alerts
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <!-- Alert Info Card -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white border-bottom-0 pt-3 pb-0">
+                <h5 class="card-title fw-bold">Alert Information</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted small mb-1">Date Created</p>
+                <p class="fw-semibold">{{ alert.created_at|date:"F d, Y H:i" }}</p>
+
+                <p class="text-muted small mb-1">Case Reference</p>
+                <p class="fw-semibold">
+                    <a href="#" class="text-decoration-none">{{ alert.case.reference }}</a>
+                </p>
+
+                <p class="text-muted small mb-1">Case Title</p>
+                <p class="fw-semibold">{{ alert.case.title }}</p>
+
+                <p class="text-muted small mb-1">Message</p>
+                <div class="alert alert-warning mb-0">
+                    <i class="bi bi-exclamation-triangle me-2"></i>{{ alert.message }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <!-- AI Report Card -->
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center pt-3 pb-2">
+                <h5 class="card-title fw-bold mb-0">
+                    <i class="bi bi-robot text-primary me-2"></i>AI Report
+                </h5>
+                <div>
+                    {% if alert.report_text %}
+                    <a href="{% url 'dashboard:export_alert_report' alert.id %}" class="btn btn-success btn-sm">
+                        <i class="bi bi-file-earmark-pdf me-1"></i> Export PDF
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if alert.report_text %}
+                    <div class="p-4 bg-light rounded border">
+                        <!-- We use linebreaks filter to display newlines as <br> or <p> -->
+                        {{ alert.report_text|linebreaks }}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="bi bi-file-earmark-text display-1 text-muted mb-3 d-block"></i>
+                        <h4 class="text-muted">No Report Generated Yet</h4>
+                        <p class="text-muted mb-4">Click below to use the AI assistant to analyze the case and generate a customized intervention report.</p>
+                        
+                        <form method="POST" action="{% url 'dashboard:generate_alert_report' alert.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg" id="generateBtn" onclick="this.innerHTML='<span class=\'spinner-border spinner-border-sm\' role=\'status\' aria-hidden=\'true\'></span> Generating...'; this.classList.add('disabled');">
+                                <i class="bi bi-magic me-2"></i> Generate AI Report
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

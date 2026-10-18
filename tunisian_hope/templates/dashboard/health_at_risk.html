@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}At-Risk Patients — Tunisian Hope & Future{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 fw-bold mb-0">
+            <i class="bi bi-exclamation-triangle text-danger me-2"></i>
+            At-Risk Patients (Health)
+        </h1>
+        <p class="text-muted mb-0 mt-1">
+            {{ total_count }} patients flagged with risk indicators requiring intervention.
+        </p>
+    </div>
+    <a href="{% url 'dashboard:health_record_list' %}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Back to All Records
+    </a>
+</div>
+
+<div class="card border-danger border-opacity-25">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="at-risk-table">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Condition</th>
+                        <th>Adherence Rate</th>
+                        <th>Missed Appts</th>
+                        <th>Risk Score</th>
+                        <th>Operator</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td><code>{{ student.student_id }}</code></td>
+                        <td><strong>{{ student.first_name }} {{ student.last_name }}</strong></td>
+                        <td>{{ student.health_condition }}</td>
+                        <td><span class="risk-high">{{ student.adherence_rate }}%</span></td>
+                        <td>{{ student.missed_appointments }}</td>
+                        <td>
+                            <span class="badge {% if student.risk_score >= 0.7 %}bg-danger{% else %}bg-warning text-dark{% endif %} fs-6">
+                                {{ student.risk_score|floatformat:2 }}
+                            </span>
+                        </td>
+                        <td>
+                            {% if student.case.assigned_operator %}
+                                {{ student.case.assigned_operator.get_full_name|default:student.case.assigned_operator.username }}
+                            {% else %}
+                                <span class="text-muted">Unassigned</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'admin:core_case_change' student.case.id %}" class="btn btn-sm btn-primary" target="_blank">
+                                View Case <small class="text-muted text-white">↗</small>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center text-muted py-4">
+                            <i class="bi bi-check-circle text-success fs-2 d-block mb-2"></i>
+                            No patients currently flagged as at-risk. Great job!
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

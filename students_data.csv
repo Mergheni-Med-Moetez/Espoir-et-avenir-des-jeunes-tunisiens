@@ -1,0 +1,201 @@
+student_id,region,school_type,attendance_rate_30_days,grade_trend,behavior_notes_count,operator_id,status,recorded_at
+STU-2026-001,Ben Arous,High School,86.7,improving,1,4,intake,2026-02-10T00:00:00Z
+STU-2026-002,Bizerte,Middle School,99.1,stable,1,13,closed,2026-04-20T00:00:00Z
+STU-2026-003,Sousse,Middle School,96.9,improving,0,5,intake,2026-02-22T00:00:00Z
+STU-2026-004,Sfax,Middle School,74.1,declining,6,11,intervention,2026-04-30T00:00:00Z
+STU-2026-005,Ben Arous,Middle School,55.3,declining,2,1,intervention,2026-01-27T00:00:00Z
+STU-2026-006,Tunis,Middle School,98.9,stable,0,8,intake,2026-02-07T00:00:00Z
+STU-2026-007,Sfax,Middle School,98.5,stable,1,8,intake,2026-04-03T00:00:00Z
+STU-2026-008,Tunis,High School,68.2,declining,5,9,assessment,2026-01-04T00:00:00Z
+STU-2026-009,Ariana,High School,55.0,declining,5,1,assessment,2026-03-11T00:00:00Z
+STU-2026-010,Tunis,High School,92.9,improving,1,3,closed,2026-01-11T00:00:00Z
+STU-2026-011,Sfax,High School,99.5,stable,1,6,closed,2026-04-14T00:00:00Z
+STU-2026-012,Mahdia,High School,90.3,improving,0,15,intake,2026-02-19T00:00:00Z
+STU-2026-013,Bizerte,High School,98.5,stable,1,14,intake,2026-04-23T00:00:00Z
+STU-2026-014,Mahdia,Middle School,74.7,declining,4,2,assessment,2026-03-30T00:00:00Z
+STU-2026-015,Sfax,High School,99.6,stable,1,3,closed,2026-01-24T00:00:00Z
+STU-2026-016,Ariana,Middle School,77.8,declining,2,3,assessment,2026-01-31T00:00:00Z
+STU-2026-017,Ben Arous,Middle School,86.5,stable,0,13,intake,2026-03-08T00:00:00Z
+STU-2026-018,Sousse,High School,63.5,declining,2,10,intervention,2026-04-19T00:00:00Z
+STU-2026-019,Mahdia,Middle School,95.9,stable,1,10,intake,2026-03-26T00:00:00Z
+STU-2026-020,Mahdia,High School,100.0,stable,1,5,intake,2026-01-05T00:00:00Z
+STU-2026-021,Tunis,Middle School,98.0,stable,1,4,closed,2026-03-24T00:00:00Z
+STU-2026-022,Sfax,High School,59.7,declining,2,12,assessment,2026-05-10T00:00:00Z
+STU-2026-023,Sousse,Middle School,88.8,improving,1,8,intake,2026-03-24T00:00:00Z
+STU-2026-024,Ariana,High School,56.2,declining,5,15,assessment,2026-04-02T00:00:00Z
+STU-2026-025,Bizerte,High School,97.5,stable,1,9,intake,2026-03-20T00:00:00Z
+STU-2026-026,Sfax,Middle School,89.1,stable,1,3,intake,2026-02-01T00:00:00Z
+STU-2026-027,Ben Arous,Middle School,86.2,stable,0,15,intake,2026-01-03T00:00:00Z
+STU-2026-028,Ben Arous,High School,89.1,improving,1,15,closed,2026-02-02T00:00:00Z
+STU-2026-029,Tunis,Middle School,80.0,declining,3,6,assessment,2026-04-03T00:00:00Z
+STU-2026-030,Ariana,High School,91.8,improving,1,4,intake,2026-04-30T00:00:00Z
+STU-2026-031,Bizerte,High School,79.5,declining,5,6,assessment,2026-04-10T00:00:00Z
+STU-2026-032,Mahdia,Middle School,98.2,stable,0,4,intake,2026-02-15T00:00:00Z
+STU-2026-033,Sfax,Middle School,54.0,declining,5,15,intervention,2026-01-07T00:00:00Z
+STU-2026-034,Sousse,High School,82.7,declining,5,7,assessment,2026-01-26T00:00:00Z
+STU-2026-035,Tunis,High School,95.3,improving,1,9,intake,2026-02-16T00:00:00Z
+STU-2026-036,Sousse,High School,98.3,improving,1,2,closed,2026-03-23T00:00:00Z
+STU-2026-037,Mahdia,High School,88.1,improving,0,12,closed,2026-02-07T00:00:00Z
+STU-2026-038,Bizerte,High School,89.4,improving,1,8,closed,2026-01-05T00:00:00Z
+STU-2026-039,Sousse,Middle School,91.2,improving,0,14,intake,2026-04-27T00:00:00Z
+STU-2026-040,Ben Arous,High School,88.5,improving,1,14,intake,2026-03-19T00:00:00Z
+STU-2026-041,Tunis,High School,96.1,improving,0,6,closed,2026-02-19T00:00:00Z
+STU-2026-042,Bizerte,High School,97.7,improving,0,14,intake,2026-02-11T00:00:00Z
+STU-2026-043,Bizerte,High School,91.4,improving,1,15,intake,2026-04-12T00:00:00Z
+STU-2026-044,Ben Arous,Middle School,97.5,stable,0,6,closed,2026-02-06T00:00:00Z
+STU-2026-045,Bizerte,Middle School,64.7,declining,5,9,intervention,2026-01-14T00:00:00Z
+STU-2026-046,Ben Arous,Middle School,82.8,declining,6,15,assessment,2026-02-15T00:00:00Z
+STU-2026-047,Tunis,High School,64.8,declining,3,8,intervention,2026-01-03T00:00:00Z
+STU-2026-048,Sfax,Middle School,50.4,declining,4,3,assessment,2026-01-25T00:00:00Z
+STU-2026-049,Tunis,High School,70.1,declining,3,15,assessment,2026-01-17T00:00:00Z
+STU-2026-050,Mahdia,Middle School,76.3,declining,2,12,assessment,2026-02-28T00:00:00Z
+STU-2026-051,Ariana,Middle School,74.2,declining,4,2,intervention,2026-03-21T00:00:00Z
+STU-2026-052,Mahdia,Middle School,83.3,declining,3,11,assessment,2026-01-23T00:00:00Z
+STU-2026-053,Mahdia,Middle School,93.2,improving,1,6,closed,2026-01-30T00:00:00Z
+STU-2026-054,Sousse,Middle School,91.2,stable,1,4,intake,2026-02-14T00:00:00Z
+STU-2026-055,Ben Arous,High School,96.2,improving,1,10,intake,2026-03-17T00:00:00Z
+STU-2026-056,Ben Arous,High School,61.8,declining,6,4,assessment,2026-04-02T00:00:00Z
+STU-2026-057,Bizerte,Middle School,60.3,declining,4,5,assessment,2026-04-06T00:00:00Z
+STU-2026-058,Ariana,High School,93.5,improving,0,11,intake,2026-05-06T00:00:00Z
+STU-2026-059,Sousse,High School,65.2,declining,3,6,assessment,2026-01-26T00:00:00Z
+STU-2026-060,Ariana,Middle School,98.1,stable,0,6,closed,2026-03-16T00:00:00Z
+STU-2026-061,Ben Arous,High School,57.4,declining,2,9,intervention,2026-04-05T00:00:00Z
+STU-2026-062,Sousse,High School,87.8,improving,1,2,closed,2026-01-10T00:00:00Z
+STU-2026-063,Sousse,High School,71.8,declining,3,4,intervention,2026-03-27T00:00:00Z
+STU-2026-064,Ariana,Middle School,89.4,stable,1,4,closed,2026-03-26T00:00:00Z
+STU-2026-065,Sfax,High School,96.3,stable,1,12,intake,2026-05-04T00:00:00Z
+STU-2026-066,Ariana,High School,57.2,declining,2,4,intervention,2026-01-01T00:00:00Z
+STU-2026-067,Tunis,Middle School,88.2,improving,0,5,closed,2026-05-07T00:00:00Z
+STU-2026-068,Ariana,High School,97.3,improving,0,8,intake,2026-02-05T00:00:00Z
+STU-2026-069,Mahdia,High School,99.1,improving,1,14,intake,2026-02-08T00:00:00Z
+STU-2026-070,Sfax,High School,66.9,declining,2,4,intervention,2026-02-10T00:00:00Z
+STU-2026-071,Sfax,High School,88.3,stable,1,5,intake,2026-03-29T00:00:00Z
+STU-2026-072,Sousse,Middle School,74.6,declining,3,14,assessment,2026-04-03T00:00:00Z
+STU-2026-073,Mahdia,High School,77.4,declining,2,1,intervention,2026-04-25T00:00:00Z
+STU-2026-074,Sousse,Middle School,95.5,improving,0,12,closed,2026-01-23T00:00:00Z
+STU-2026-075,Tunis,Middle School,94.5,improving,1,5,closed,2026-04-24T00:00:00Z
+STU-2026-076,Sousse,High School,89.9,stable,0,3,closed,2026-03-23T00:00:00Z
+STU-2026-077,Ariana,High School,71.2,declining,4,6,intervention,2026-02-22T00:00:00Z
+STU-2026-078,Bizerte,High School,61.4,declining,6,14,intervention,2026-05-02T00:00:00Z
+STU-2026-079,Ariana,Middle School,53.7,declining,4,5,intervention,2026-02-10T00:00:00Z
+STU-2026-080,Sfax,High School,68.2,declining,6,7,assessment,2026-04-11T00:00:00Z
+STU-2026-081,Tunis,High School,81.0,declining,2,1,assessment,2026-01-24T00:00:00Z
+STU-2026-082,Mahdia,High School,76.9,declining,6,15,assessment,2026-03-22T00:00:00Z
+STU-2026-083,Sfax,High School,89.5,stable,0,11,intake,2026-03-05T00:00:00Z
+STU-2026-084,Ben Arous,Middle School,84.5,declining,2,9,assessment,2026-04-29T00:00:00Z
+STU-2026-085,Sfax,High School,93.0,improving,0,9,closed,2026-03-31T00:00:00Z
+STU-2026-086,Ariana,High School,96.7,stable,1,5,intake,2026-04-23T00:00:00Z
+STU-2026-087,Ariana,High School,77.3,declining,3,11,assessment,2026-01-09T00:00:00Z
+STU-2026-088,Tunis,Middle School,94.9,stable,1,8,closed,2026-04-25T00:00:00Z
+STU-2026-089,Sfax,Middle School,97.5,stable,1,15,intake,2026-05-03T00:00:00Z
+STU-2026-090,Bizerte,Middle School,75.9,declining,2,12,assessment,2026-01-07T00:00:00Z
+STU-2026-091,Mahdia,Middle School,94.9,stable,0,15,closed,2026-02-07T00:00:00Z
+STU-2026-092,Tunis,High School,94.8,improving,1,6,closed,2026-01-16T00:00:00Z
+STU-2026-093,Ben Arous,High School,96.1,improving,1,12,intake,2026-02-17T00:00:00Z
+STU-2026-094,Mahdia,Middle School,61.3,declining,5,5,intervention,2026-03-12T00:00:00Z
+STU-2026-095,Tunis,High School,55.4,declining,2,12,assessment,2026-04-15T00:00:00Z
+STU-2026-096,Sousse,High School,87.8,improving,1,15,closed,2026-02-25T00:00:00Z
+STU-2026-097,Ariana,High School,86.6,improving,1,10,intake,2026-04-21T00:00:00Z
+STU-2026-098,Tunis,High School,64.8,declining,5,1,intervention,2026-01-16T00:00:00Z
+STU-2026-099,Mahdia,Middle School,95.1,stable,1,1,intake,2026-01-13T00:00:00Z
+STU-2026-100,Tunis,Middle School,89.9,stable,1,3,closed,2026-02-16T00:00:00Z
+STU-2026-101,Tunis,High School,54.3,declining,3,3,assessment,2026-03-23T00:00:00Z
+STU-2026-102,Sousse,High School,90.5,stable,0,3,closed,2026-02-06T00:00:00Z
+STU-2026-103,Ariana,Middle School,91.7,stable,0,5,intake,2026-04-01T00:00:00Z
+STU-2026-104,Mahdia,Middle School,77.7,declining,2,7,intervention,2026-03-30T00:00:00Z
+STU-2026-105,Sfax,Middle School,90.5,stable,1,7,intake,2026-02-27T00:00:00Z
+STU-2026-106,Tunis,Middle School,97.5,stable,0,13,closed,2026-03-04T00:00:00Z
+STU-2026-107,Ben Arous,High School,99.1,improving,0,4,closed,2026-03-29T00:00:00Z
+STU-2026-108,Sfax,Middle School,87.2,stable,1,9,closed,2026-04-16T00:00:00Z
+STU-2026-109,Mahdia,Middle School,55.8,declining,6,5,assessment,2026-04-10T00:00:00Z
+STU-2026-110,Ariana,Middle School,59.3,declining,4,9,intervention,2026-04-21T00:00:00Z
+STU-2026-111,Tunis,High School,61.3,declining,2,13,intervention,2026-01-31T00:00:00Z
+STU-2026-112,Mahdia,High School,70.1,declining,6,2,intervention,2026-03-08T00:00:00Z
+STU-2026-113,Tunis,Middle School,90.3,stable,0,15,closed,2026-03-28T00:00:00Z
+STU-2026-114,Bizerte,Middle School,69.6,declining,2,13,intervention,2026-01-02T00:00:00Z
+STU-2026-115,Tunis,High School,58.2,declining,2,14,intervention,2026-03-26T00:00:00Z
+STU-2026-116,Ben Arous,High School,54.6,declining,5,11,intervention,2026-03-26T00:00:00Z
+STU-2026-117,Sousse,Middle School,95.0,stable,0,4,closed,2026-04-19T00:00:00Z
+STU-2026-118,Mahdia,Middle School,90.8,improving,0,13,intake,2026-03-12T00:00:00Z
+STU-2026-119,Mahdia,High School,91.5,stable,1,6,intake,2026-05-05T00:00:00Z
+STU-2026-120,Tunis,High School,74.8,declining,4,5,assessment,2026-05-04T00:00:00Z
+STU-2026-121,Sfax,High School,98.9,stable,0,9,intake,2026-04-02T00:00:00Z
+STU-2026-122,Sousse,Middle School,83.4,declining,3,10,assessment,2026-05-09T00:00:00Z
+STU-2026-123,Bizerte,Middle School,86.3,stable,0,13,intake,2026-04-28T00:00:00Z
+STU-2026-124,Bizerte,High School,98.6,improving,0,12,closed,2026-03-17T00:00:00Z
+STU-2026-125,Ariana,Middle School,93.3,improving,0,2,intake,2026-03-24T00:00:00Z
+STU-2026-126,Ben Arous,Middle School,93.0,stable,0,1,closed,2026-04-10T00:00:00Z
+STU-2026-127,Ben Arous,Middle School,86.7,improving,0,14,intake,2026-01-16T00:00:00Z
+STU-2026-128,Ariana,High School,57.1,declining,2,1,assessment,2026-04-30T00:00:00Z
+STU-2026-129,Ariana,High School,95.2,stable,1,3,intake,2026-01-24T00:00:00Z
+STU-2026-130,Ariana,Middle School,89.7,improving,0,13,intake,2026-01-29T00:00:00Z
+STU-2026-131,Sfax,High School,97.8,stable,0,13,closed,2026-04-06T00:00:00Z
+STU-2026-132,Sfax,Middle School,93.0,improving,0,10,intake,2026-03-07T00:00:00Z
+STU-2026-133,Mahdia,High School,63.9,declining,6,3,intervention,2026-04-22T00:00:00Z
+STU-2026-134,Sfax,High School,90.0,stable,1,8,intake,2026-04-09T00:00:00Z
+STU-2026-135,Tunis,Middle School,55.3,declining,4,12,assessment,2026-03-04T00:00:00Z
+STU-2026-136,Bizerte,High School,95.7,stable,0,14,closed,2026-04-09T00:00:00Z
+STU-2026-137,Mahdia,Middle School,95.4,stable,1,6,intake,2026-04-21T00:00:00Z
+STU-2026-138,Sfax,Middle School,95.2,improving,1,3,closed,2026-03-04T00:00:00Z
+STU-2026-139,Mahdia,High School,61.4,declining,5,14,assessment,2026-04-21T00:00:00Z
+STU-2026-140,Mahdia,High School,91.5,improving,1,9,closed,2026-01-02T00:00:00Z
+STU-2026-141,Bizerte,High School,96.0,stable,1,8,closed,2026-04-07T00:00:00Z
+STU-2026-142,Bizerte,High School,75.3,declining,2,14,intervention,2026-02-18T00:00:00Z
+STU-2026-143,Ariana,Middle School,94.4,improving,0,10,intake,2026-02-13T00:00:00Z
+STU-2026-144,Mahdia,High School,87.8,improving,1,7,closed,2026-03-28T00:00:00Z
+STU-2026-145,Mahdia,High School,96.7,stable,0,11,closed,2026-03-03T00:00:00Z
+STU-2026-146,Ariana,High School,96.7,improving,1,4,closed,2026-03-22T00:00:00Z
+STU-2026-147,Ariana,Middle School,97.6,improving,1,11,intake,2026-04-16T00:00:00Z
+STU-2026-148,Tunis,Middle School,81.5,declining,3,1,assessment,2026-02-17T00:00:00Z
+STU-2026-149,Ariana,Middle School,86.8,stable,0,15,intake,2026-02-05T00:00:00Z
+STU-2026-150,Tunis,High School,72.4,declining,3,15,assessment,2026-01-19T00:00:00Z
+STU-2026-151,Tunis,High School,90.3,stable,1,1,closed,2026-02-14T00:00:00Z
+STU-2026-152,Bizerte,High School,89.9,stable,1,11,intake,2026-05-08T00:00:00Z
+STU-2026-153,Ariana,Middle School,98.8,improving,1,9,intake,2026-01-17T00:00:00Z
+STU-2026-154,Sousse,Middle School,90.3,improving,0,8,intake,2026-04-26T00:00:00Z
+STU-2026-155,Sfax,High School,89.9,improving,0,3,intake,2026-01-19T00:00:00Z
+STU-2026-156,Ariana,Middle School,99.4,improving,1,9,intake,2026-03-21T00:00:00Z
+STU-2026-157,Sfax,High School,68.0,declining,6,14,assessment,2026-02-17T00:00:00Z
+STU-2026-158,Tunis,Middle School,97.0,improving,1,8,closed,2026-04-20T00:00:00Z
+STU-2026-159,Ariana,High School,69.5,declining,3,1,intervention,2026-04-11T00:00:00Z
+STU-2026-160,Ben Arous,Middle School,95.1,stable,0,10,intake,2026-01-07T00:00:00Z
+STU-2026-161,Ben Arous,High School,51.3,declining,6,6,assessment,2026-04-09T00:00:00Z
+STU-2026-162,Ariana,High School,90.1,improving,1,15,intake,2026-01-12T00:00:00Z
+STU-2026-163,Sousse,High School,97.1,stable,1,9,closed,2026-02-22T00:00:00Z
+STU-2026-164,Mahdia,Middle School,91.3,stable,1,10,intake,2026-01-06T00:00:00Z
+STU-2026-165,Mahdia,High School,98.7,improving,0,8,closed,2026-04-29T00:00:00Z
+STU-2026-166,Sfax,Middle School,99.5,stable,1,5,intake,2026-03-01T00:00:00Z
+STU-2026-167,Ben Arous,High School,92.5,improving,1,7,closed,2026-01-05T00:00:00Z
+STU-2026-168,Sfax,Middle School,98.7,stable,0,14,closed,2026-04-05T00:00:00Z
+STU-2026-169,Sousse,Middle School,86.5,improving,0,9,closed,2026-05-02T00:00:00Z
+STU-2026-170,Sfax,Middle School,94.8,stable,0,13,intake,2026-04-03T00:00:00Z
+STU-2026-171,Ben Arous,Middle School,98.3,improving,1,3,intake,2026-03-10T00:00:00Z
+STU-2026-172,Ariana,High School,70.6,declining,6,14,assessment,2026-04-21T00:00:00Z
+STU-2026-173,Sousse,Middle School,56.2,declining,5,5,assessment,2026-04-02T00:00:00Z
+STU-2026-174,Bizerte,High School,99.4,stable,0,13,closed,2026-02-19T00:00:00Z
+STU-2026-175,Sfax,Middle School,60.4,declining,6,6,assessment,2026-03-31T00:00:00Z
+STU-2026-176,Sfax,Middle School,95.7,improving,1,2,intake,2026-01-29T00:00:00Z
+STU-2026-177,Bizerte,High School,63.3,declining,2,9,intervention,2026-05-06T00:00:00Z
+STU-2026-178,Sousse,High School,86.4,improving,1,2,intake,2026-01-15T00:00:00Z
+STU-2026-179,Ariana,High School,94.4,stable,0,3,intake,2026-01-23T00:00:00Z
+STU-2026-180,Sousse,High School,91.3,stable,1,11,intake,2026-05-03T00:00:00Z
+STU-2026-181,Bizerte,High School,70.8,declining,6,3,assessment,2026-03-27T00:00:00Z
+STU-2026-182,Mahdia,High School,88.0,improving,1,5,closed,2026-02-12T00:00:00Z
+STU-2026-183,Bizerte,High School,86.1,improving,0,10,closed,2026-05-10T00:00:00Z
+STU-2026-184,Sfax,Middle School,97.5,improving,0,15,closed,2026-01-31T00:00:00Z
+STU-2026-185,Sfax,High School,72.3,declining,4,1,assessment,2026-05-07T00:00:00Z
+STU-2026-186,Sousse,Middle School,75.4,declining,5,3,intervention,2026-04-04T00:00:00Z
+STU-2026-187,Mahdia,Middle School,87.9,improving,1,10,closed,2026-04-15T00:00:00Z
+STU-2026-188,Bizerte,Middle School,87.6,improving,0,6,closed,2026-05-01T00:00:00Z
+STU-2026-189,Sfax,Middle School,88.8,improving,1,12,closed,2026-04-22T00:00:00Z
+STU-2026-190,Ben Arous,Middle School,94.1,stable,1,11,closed,2026-03-20T00:00:00Z
+STU-2026-191,Ben Arous,Middle School,92.2,improving,0,11,closed,2026-03-27T00:00:00Z
+STU-2026-192,Ben Arous,Middle School,81.6,declining,5,12,intervention,2026-03-30T00:00:00Z
+STU-2026-193,Sfax,High School,72.7,declining,5,5,intervention,2026-01-01T00:00:00Z
+STU-2026-194,Sfax,Middle School,97.3,stable,0,6,intake,2026-03-24T00:00:00Z
+STU-2026-195,Ben Arous,Middle School,98.5,stable,0,9,intake,2026-04-27T00:00:00Z
+STU-2026-196,Mahdia,High School,77.8,declining,3,14,intervention,2026-04-15T00:00:00Z
+STU-2026-197,Tunis,High School,97.0,improving,0,14,closed,2026-03-06T00:00:00Z
+STU-2026-198,Sfax,Middle School,86.4,improving,0,11,intake,2026-01-26T00:00:00Z
+STU-2026-199,Bizerte,Middle School,89.0,improving,0,14,intake,2026-03-21T00:00:00Z
+STU-2026-200,Sousse,Middle School,94.0,improving,1,15,intake,2026-05-03T00:00:00Z
